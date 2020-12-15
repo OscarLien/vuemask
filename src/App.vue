@@ -54,7 +54,11 @@
           </label>
         </div>
       </div>
-      <div class="sideSwitch" @click="sidebar = !sidebar">
+      <div class="sideSwitch-sm"  @click="sidebar = !sidebar">
+        <i class="fas fa-chevron-left" v-if="sidebar === true"></i>
+      </div>
+
+      <div class="sideSwitch"  @click="sidebar = !sidebar">
         <i class="fas fa-chevron-left" v-if="sidebar === true"></i>
         <i class="fas fa-chevron-right" v-else></i>
       </div>
@@ -89,7 +93,11 @@
         </template>
       </div>
     </div>
-    <div id="map"></div>
+    <div id="map">
+        <div class="sideSwitch-sm-back"  @click="sidebar = true">
+        <i class="fas fa-chevron-right"></i>
+        </div>
+    </div>
   </div>
 </template>
 <script>

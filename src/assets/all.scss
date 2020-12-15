@@ -6,145 +6,193 @@
 
 html,
 body {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 .sidebar {
-    width: 400px;
-    transform: translateX(0);
-    z-index: 9999;
-    background-color: #fff;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    top: 0;
-    transition: transform 0.5s;
+  // width: 400px;
+  width: calc(100% - 75%);
+  transform: translateX(0);
+  z-index: 9999;
+  background-color: #fff;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  top: 0;
+  transition: transform 0.5s;
 }
+
 .sideHeader {
-    background-color: $primary;
-    padding: 1rem;
-    position: relative;
-    .todayInfo {
-        color: white;
-        display: flex;
-        justify-content: space-between;
-        h2 {
-            font-size: 2rem;
-        }
-        .buyInfo {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            .idColor {
-                color: yellow;
-                font-size: 1.125rem;
-                font-weight: bold;
-            }
-        }
+  background-color: $primary;
+  padding: 1rem;
+  position: relative;
+  .todayInfo {
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    h2 {
+      font-size: 2rem;
     }
-    .selectArea {
-        margin-top: 0.5rem;
-        display: flex;
-        justify-content: space-around;
-        .citySelect {
-            border-radius: 5px;
-            padding: 0.3rem;
-            border: 1px solid #fff;
-        }
+    .buyInfo {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      .idColor {
+        color: yellow;
+        font-size: 1.125rem;
+        font-weight: bold;
+      }
     }
+  }
+  .selectArea {
+    margin-top: 0.5rem;
+    display: flex;
+    justify-content: space-around;
+    .citySelect {
+      border-radius: 5px;
+      padding: 0.3rem;
+      border: 1px solid #fff;
+    }
+  }
 }
 .sideSwitch {
+  background-color: $primary;
+  height: 10%;
+  width: 6%;
+  position: absolute;
+  border-radius: 0 5px 5px 0;
+  left: 99.5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 1.5rem;
+  box-shadow: 0px 3px 6px #00000029;
+  cursor: pointer;
+}
+
+.sideBody {
+  overflow: auto;
+  height: 85vh;
+  .sideContentBox {
+    border-bottom: 2px solid #d9d9d9;
+    padding: 1rem;
+    cursor: pointer;
+    &:hover {
+      background-color: azure;
+    }
+    .pharmacyName {
+      font-size: 1.25rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+    .pharmacyInfo {
+      color: #666;
+      font-size: 1rem;
+      line-height: 36px;
+    }
+    .maskLeft {
+      display: flex;
+      justify-content: space-evenly;
+      .countbox {
+        color: white;
+        border-radius: 60px;
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+        font-weight: bold;
+        width: 45%;
+        display: flex;
+        justify-content: space-between;
+        &.adult {
+          background-color: $primary;
+        }
+        &.child {
+          background-color: $secondary;
+        }
+      }
+    }
+  }
+}
+.hide {
+  transform: translateX(-100%);
+}
+#map {
+  width: 100%;
+  height: 100%;
+  right: 0;
+  position: absolute;
+  overflow: hidden;
+}
+.leaflet-popup-content-wrapper {
+  width: 300px;
+  .popOutBox {
+    .pharmacyName {
+      font-weight: bold;
+      font-size: 14px;
+      margin-bottom: 0.75rem;
+    }
+    .maskLeft {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 0.75rem;
+      .countbox {
+        color: white;
+        border-radius: 60px;
+        padding: 0.34375rem 0.75rem;
+        font-size: 0.5rem;
+        font-weight: bold;
+        width: 45%;
+        display: flex;
+        justify-content: space-between;
+        &.adult {
+          background-color: $primary;
+        }
+        &.child {
+          background-color: $secondary;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .sidebar {
+    width: 100%;
+  }
+  .sideSwitch-sm{
     background-color: $primary;
     height: 10%;
-    width: 7%;
+    width: 6%;
     position: absolute;
     border-radius: 0 5px 5px 0;
-    left: 99.5%;
     display: flex;
+    right: 0;
     justify-content: center;
     align-items: center;
     color: #fff;
     font-size: 1.5rem;
     box-shadow: 0px 3px 6px #00000029;
     cursor: pointer;
-}
-.sideBody {
-    overflow: auto;
-    height: 85vh;
-    .sideContentBox {
-        border-bottom: 2px solid #d9d9d9;
-        padding: 1rem;
-        .pharmacyName {
-            font-size: 1.25rem;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
-        .pharmacyInfo {
-            color: #666;
-            font-size: 1rem;
-            line-height: 36px;
-        }
-        .maskLeft {
-            display: flex;
-            justify-content: space-evenly;
-            .countbox {
-                color: white;
-                border-radius: 60px;
-                padding: 0.5rem 1rem;
-                font-size: 1rem;
-                font-weight: bold;
-                width: 45%;
-                display: flex;
-                justify-content: space-between;
-                &.adult {
-                    background-color: $primary;
-                }
-                &.child {
-                    background-color: $secondary;
-                }
-            }
-        }
-    }
-}
-.hide {
-    transform: translateX(-400px);
-}
-#map {
-    width: 100%;
-    height: 100%;
-    right: 0;
+  }
+  .sideSwitch-sm-back{
+    background-color: $primary;
+    height: 10%;
+    width: 6%;
     position: absolute;
-    overflow: hidden;
-}
-.leaflet-popup-content-wrapper {
-    width: 300px;
-    .popOutBox {
-        .pharmacyName {
-            font-weight: bold;
-            font-size: 14px;
-            margin-bottom: 0.75rem;
-        }
-        .maskLeft {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 0.75rem;
-            .countbox {
-                color: white;
-                border-radius: 60px;
-                padding: 0.34375rem 0.75rem;
-                font-size: 0.5rem;
-                font-weight: bold;
-                width: 45%;
-                display: flex;
-                justify-content: space-between;
-                &.adult {
-                    background-color: $primary;
-                }
-                &.child {
-                    background-color: $secondary;
-                }
-            }
-        }
-    }
+    border-radius: 0 5px 5px 0;
+    display: flex;
+    left: 0;
+    top: 300px;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 1.5rem;
+    box-shadow: 0px 3px 6px #00000029;
+    cursor: pointer;
+    z-index: 999;
+  }
+  .sideSwitch{
+    transform: translateX(-100%);
+  }
 }
