@@ -12,7 +12,7 @@ body {
 }
 .sidebar {
   // width: 400px;
-  width: calc(100% - 75%);
+  width: calc(100% - 78%);
   transform: translateX(0);
   z-index: 9999;
   background-color: #fff;
@@ -160,6 +160,9 @@ body {
   .sidebar {
     width: 100%;
   }
+  .sideSwitch{
+    display: none;
+  }
   .sideSwitch-sm{
     background-color: $primary;
     height: 10%;
@@ -168,6 +171,7 @@ body {
     border-radius: 0 5px 5px 0;
     display: flex;
     right: 0;
+    top: 320px;
     justify-content: center;
     align-items: center;
     color: #fff;
@@ -183,7 +187,7 @@ body {
     border-radius: 0 5px 5px 0;
     display: flex;
     left: 0;
-    top: 300px;
+    top: 320px;
     justify-content: center;
     align-items: center;
     color: #fff;
